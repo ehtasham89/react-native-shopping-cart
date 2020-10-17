@@ -8,7 +8,7 @@ const Item = (props) => {
     return (
       <View>
         <Text>{title} - &#36;{price} {quantity ? `x ${quantity}` : null} </Text>
-        {action} 
+        <View>{action}</View>
       </View>
     )
   

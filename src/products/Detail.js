@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
-import PropTypes from 'prop-types'
 import ProductItem from '../components/Item'
 
-const ItemDetailsScreen = () => {
+const ItemDetailsScreen = (props) => {
+    const { product, onAddToCartClicked } = props.route.params;
 
-    const { product } = this.props
     const addToCartAction = (
-      <Button onPress={this.props.onAddToCartClicked(product.id)} disabled={product.inventory > 0 ? '' : 'disabled'}>
-        <Text>{product.inventory > 0 ? 'Add to cart' : 'Sold Out'}</Text>
-      </Button>
+        <Button 
+            onPress={onAddToCartClicked(product.id)} 
+            //disabled={product.inventory > 0 ? '' : 'disabled'} 
+            title={product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
+        />
     )
 
     return (
@@ -20,12 +21,3 @@ const ItemDetailsScreen = () => {
 }
 
 export default ItemDetailsScreen;
-
-ItemDetailsScreen.propTypes = {
-  product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    inventory: PropTypes.number.isRequired,
-  }).isRequired,
-  onAddToCartClicked: PropTypes.func.isRequired,
-}
