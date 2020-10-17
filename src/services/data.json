@@ -1,0 +1,5 @@
+[
+    { "id": 1, "title": "iPhone x", "price": 3000.01, "inventory": 2 },
+    { "id": 2, "title": "iPad", "price": 100, "inventory": 10 },
+    { "id": 3, "title": "Headphone", "price": 19.99, "inventory": 5 }
+]
