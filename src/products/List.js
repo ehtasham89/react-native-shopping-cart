@@ -3,16 +3,19 @@ import { Button, Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
-//import { addToCart } from './store/actions'
+import { addToCart } from './store/action';
 import { getVisibleProducts } from './store/reducer';
 
 // render item
 const item = (product) => {
+    const dispatch = useDispatch();
     const navigation = useNavigation();
+
+    const addToCartAction = (id) => dispatch(addToCart(id));
 
     return(<View key={product.id} style={styles.btn}>
             <Button  
-                onPress={() => navigation.navigate('Details', {product, onAddToCartClicked: e=>e})} 
+                onPress={() => navigation.navigate('Details', {product, onAddToCartClicked: () => addToCartAction(product.id)})} 
                 title={`${product.title} - View Detail`} 
             />
             <Text></Text>

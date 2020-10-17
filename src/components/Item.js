@@ -7,7 +7,9 @@ const Item = (props) => {
     
     return (
       <View>
-        <Text>{title} - &#36;{price} {quantity ? `x ${quantity}` : null} </Text>
+        <View style={{paddingBottom: 20}}>
+          <Text style={{fontSize: 26}}>{title} - &#36;{price} {quantity ? `x ${quantity}` : null} </Text>
+        </View>
         <View>{action}</View>
       </View>
     )

@@ -7,8 +7,7 @@ const ItemDetailsScreen = (props) => {
 
     const addToCartAction = (
         <Button 
-            onPress={onAddToCartClicked(product.id)} 
-            //disabled={product.inventory > 0 ? '' : 'disabled'} 
+            onPress={onAddToCartClicked} 
             title={product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
         />
     )

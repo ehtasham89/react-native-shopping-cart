@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { RECEIVE_PRODUCTS, ADD_TO_CART, REMOVE_FROM_CART } from './action';
 
-function products(state, action) {
+function products(state = {}, action) {
   switch (action.type) {
     case ADD_TO_CART:
       return {
