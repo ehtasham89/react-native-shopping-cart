@@ -4,6 +4,9 @@ export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
+export const ADD_TO_FAV = 'ADD_TO_FAV'
+export const REMOVE_FROM_FAV = 'REMOVE_FROM_FAV'
+
 export function getAllProducts() {
   return {
     type: GET_ALL_PRODUCTS,
@@ -29,4 +32,18 @@ export function removeFromCart(productId) {
     type: REMOVE_FROM_CART,
     productId,
   }
+}
+
+export function addToFav(productId) {
+    return {
+      type: ADD_TO_FAV,
+      productId,
+    }
+}
+  
+export function removeFromFav(productId) {
+    return {
+      type: REMOVE_FROM_FAV,
+      productId,
+    }
 }

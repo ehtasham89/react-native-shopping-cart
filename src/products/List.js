@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Button, Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addToCart } from './store/action';
+import { addToCart, addToFav } from './store/action';
 import { getVisibleProducts } from './store/reducer';
 
 // render item
@@ -12,10 +12,16 @@ const item = (product) => {
     const navigation = useNavigation();
 
     const addToCartAction = (id) => dispatch(addToCart(id));
+    const addToFavAction = (id) => dispatch(addToFav(id));
 
     return(<View key={product.id} style={styles.btn}>
             <Button  
-                onPress={() => navigation.navigate('Details', {product, onAddToCartClicked: () => addToCartAction(product.id)})} 
+                onPress={() => navigation.navigate('Details', {
+                                                                product, 
+                                                                onAddToCartClicked: () => addToCartAction(product.id),
+                                                                onAddToFavClicked: () => addToFavAction(product.id)
+
+                                                            })} 
                 title={`${product.title} - View Detail`} 
             />
             <Text></Text>
