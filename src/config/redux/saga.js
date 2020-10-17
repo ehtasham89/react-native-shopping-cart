@@ -1,15 +1,8 @@
-import { put, call, fork, takeEvery, all } from 'redux-saga/effects'
+import { fork, all } from 'redux-saga/effects';
+import * as productSaga from './../../products/store/saga';
 
-export function* watchGetProducts() {
-  /*
-    takeEvery will fork a new `getAllProducts` task on each GET_ALL_PRODUCTS actions
-    i.e. concurrent GET_ALL_PRODUCTS actions are allowed
-  */
-  yield takeEvery("GET_ALL_PRODUCTS", getAllProducts)
-}
-
-
+//root saga combiner
 export default function* root() {
-  yield all([fork(getAllProducts), fork(watchGetProducts)])
+  yield all([fork(productSaga.getAllProducts), fork(productSaga.watchGetProducts)])
 }
 
