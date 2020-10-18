@@ -1,19 +1,24 @@
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ProductItem from '../components/Item'
 
 const ItemDetailsScreen = (props) => {
     const { product, onAddToCartClicked, onAddToFavClicked } = props.route.params;
-
+    const navigation = useNavigation();
+//Favourite
     const addToCartAction = (
         <View>
             <Button 
-                onPress={onAddToCartClicked} 
+                onPress={() => {
+                    onAddToCartClicked(); 
+                    navigation.navigate('Cart')
+                }} 
                 title={product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
             />
             <Text></Text>
             <Button 
-                onPress={onAddToFavClicked} 
+                onPress={() => onAddToFavClicked().then(() => navigation.navigate('Cart'))} 
                 title='Add to Favourite'
             />
         </View>

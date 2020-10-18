@@ -2,11 +2,9 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from './../../products/store/action';
 import { getProduct } from './../../products/store/reducer';
 
 
-const initialState = {
-  quantityById: {}
-}
+const initialState = {}
 
-function quantityById(state = initialState.quantityById, action) {
+function quantityById(state = initialState, action) {
   const { productId } = action
   switch (action.type) {
     case ADD_TO_CART:
@@ -15,10 +13,8 @@ function quantityById(state = initialState.quantityById, action) {
         [productId]: (state[productId] || 0) + 1,
       }
     case REMOVE_FROM_CART:
-      const qty = (state[productId] || 0) - 1
       const copy = { ...state }
-      if (qty > 0) copy[productId] = qty
-      else delete copy[productId]
+      delete copy[productId]
       return copy
     default:
       return state
@@ -26,11 +22,11 @@ function quantityById(state = initialState.quantityById, action) {
 }
 
 export function getQuantity(state, productId) {
-    return state.quantityById[productId] || 0
+    return state[productId] || 0
 }
   
 export function getAddedIds(state) {
-    return Object.keys(state.quantityById)
+    return Object.keys(state)
 }
 
 export function getCartProducts(state) {

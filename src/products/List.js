@@ -14,7 +14,7 @@ const item = (product) => {
     const addToCartAction = (id) => dispatch(addToCart(id));
     const addToFavAction = (id) => dispatch(addToFav(id));
 
-    return(<View key={product.id} style={styles.btn}>
+    return(<View key={product.id}>
             <Button  
                 onPress={() => navigation.navigate('Details', {
                                                                 product, 
@@ -49,8 +49,5 @@ export default ListItemsScreen;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-    },
-    btn: {
-        //padding: "5px",
-    },
+    }
 });
