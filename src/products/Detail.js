@@ -18,7 +18,10 @@ const ItemDetailsScreen = (props) => {
             />
             <Text></Text>
             <Button 
-                onPress={() => onAddToFavClicked().then(() => navigation.navigate('Cart'))} 
+                onPress={() => {
+                    onAddToFavClicked();
+                    navigation.navigate('Favourite')
+                }} 
                 title='Add to Favourite'
             />
         </View>

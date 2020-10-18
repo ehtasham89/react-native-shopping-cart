@@ -1,11 +1,9 @@
 import { ADD_TO_FAV, REMOVE_FROM_FAV } from './../../products/store/action';
 import { getProduct } from './../../products/store/reducer';
 
-const initialState = {
-    getFavItemsById: {}
-}
+const initialState = {}
 
-function getFavItemsById(state = initialState.getFavItemsById, action) {
+function getFavItemsById(state = initialState, action) {
   const { productId } = action
   switch (action.type) {
     case ADD_TO_FAV:
@@ -24,7 +22,7 @@ function getFavItemsById(state = initialState.getFavItemsById, action) {
 
 
 export function getAddedIds(state) {
-    return Object.keys(state.itemById)
+    return Object.keys(state)
 }
 
 export function getFavProducts(state) {
